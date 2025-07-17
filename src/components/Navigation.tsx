@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { 
@@ -17,11 +18,11 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { name: 'Home', href: '#' },
-    { name: 'Browse Venues', href: '#venues' },
-    { name: 'Categories', href: '#categories' },
-    { name: 'About', href: '#about' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Home', href: '/' },
+    { name: 'Browse Venues', href: '/browse' },
+    { name: 'Services', href: '/services' },
+    { name: 'About', href: '/about' },
+    { name: 'Contact', href: '/contact' }
   ];
 
   return (
@@ -42,13 +43,13 @@ const Navigation = () => {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.name}
-                  href={item.href}
+                  to={item.href}
                   className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-accent/50 rounded-md"
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -63,9 +64,11 @@ const Navigation = () => {
               <User className="w-4 h-4 mr-2" />
               Login
             </Button>
-            <Button variant="default" size="sm" className="bg-gradient-primary shadow-elegant">
-              List Your Venue
-            </Button>
+            <Link to="/list-venue">
+              <Button variant="default" size="sm" className="bg-gradient-primary shadow-elegant">
+                List Your Venue
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -86,13 +89,13 @@ const Navigation = () => {
         <div className="md:hidden bg-card border-t border-border/50 animate-fade-in">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.href}
+                to={item.href}
                 className="text-muted-foreground hover:text-primary block px-3 py-2 text-base font-medium transition-colors duration-200 hover:bg-accent/50 rounded-md"
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
             <div className="pt-3 border-t border-border/50 mt-3">
               <Button variant="ghost" size="sm" className="w-full justify-start mb-2">
@@ -103,9 +106,11 @@ const Navigation = () => {
                 <User className="w-4 h-4 mr-2" />
                 Login
               </Button>
-              <Button variant="default" size="sm" className="w-full bg-gradient-primary shadow-elegant">
-                List Your Venue
-              </Button>
+              <Link to="/list-venue">
+                <Button variant="default" size="sm" className="w-full bg-gradient-primary shadow-elegant">
+                  List Your Venue
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

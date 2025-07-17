@@ -28,9 +28,10 @@ interface VenueCardProps {
     verified: boolean;
     availability: 'available' | 'limited' | 'booked';
   };
+  layout?: 'grid' | 'list';
 }
 
-const VenueCard: React.FC<VenueCardProps> = ({ venue }) => {
+const VenueCard: React.FC<VenueCardProps> = ({ venue, layout = 'grid' }) => {
   const amenityIcons = {
     'Parking': Car,
     'WiFi': Wifi,
